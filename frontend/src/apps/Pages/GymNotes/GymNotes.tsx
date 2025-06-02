@@ -1,0 +1,587 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useForm, useFieldArray } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { toast } from 'sonner';
+import { motion } from 'framer-motion';
+import { DatePicker, Select } from 'antd';
+import dayjs from 'dayjs';
+import type { Dayjs } from 'dayjs';
+import { useTheme } from "../../../context/theme-provider";
+
+
+import { Button } from '@/components/ui/button';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Icons } from '@/components/icons';
+import exercises from '@/apps/Pages/GymNotes/Data/exercises.json';
+
+const { Option } = Select;
+
+const exerciseSchema = z.object({
+  exercise_name: z.string().min(1, {
+    message: 'Exercise name is required.',
+  }),
+  sets: z.number().min(1, {
+    message: 'Sets must be at least 1.',
+  }),
+  reps: z.number().min(1, {
+    message: 'Reps must be at least 1.',
+  }),
+  weight: z.number().min(0).optional(),
+  set_type: z.enum(['Superset', 'Dropset', 'Alternate']).optional(),
+  additional_exercises: z.array(z.string()).optional(),
+});
+
+const formSchema = z.object({
+  exercise_date: z.date({
+    required_error: 'A date is required.',
+  }),
+  workout_type: z.enum(['Upper Body', 'Lower Body', 'Full Body', 'Bro Split (Single Muscle)'], {
+    required_error: 'Workout type is required.',
+  }),
+  muscle_group: z.string().optional(),
+  exercises: z.array(exerciseSchema).min(1, {
+    message: 'At least one exercise is required.',
+  }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+export default function GymNotes() {
+  const [exercisesList, setExercisesList] = useState<string[]>([]);
+  const [muscleGroups, setMuscleGroups] = useState<string[]>([]);
+  const [alternateExercises, setAlternateExercises] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const { theme } = useTheme();
+  const isDarkMode =
+    theme === "dark" ||
+    (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      const styleTag = document.createElement("style");
+      styleTag.id = "dark-mode-placeholder-style";
+      styleTag.innerHTML = `
+          .ant-picker-input input::placeholder {
+            color: #888888 !important;
+            opacity: 1 !important;
+          }
+        `;
+      document.head.appendChild(styleTag);
+      return () => {
+        document.head.removeChild(styleTag);
+      };
+    } else {
+      // Remove if switching away from dark mode
+      const existing = document.getElementById("dark-mode-placeholder-style");
+      if (existing) existing.remove();
+    }
+  }, [isDarkMode]);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      exercise_date: new Date(),
+      workout_type: undefined,
+      muscle_group: undefined,
+      exercises: [
+        {
+          exercise_name: '',
+          sets: 1,
+          reps: 1,
+          weight: undefined,
+          set_type: undefined,
+          additional_exercises: [],
+        },
+      ],
+    },
+  });
+
+  const { fields, append, remove } = useFieldArray({
+    control: form.control,
+    name: 'exercises',
+  });
+
+  const workoutType = form.watch('workout_type');
+  const muscleGroup = form.watch('muscle_group');
+
+  useEffect(() => {
+    fetchExercises();
+    const broSplit = exercises['Bro Split (Single Muscle)'];
+    const alternateList = [
+      ...(broSplit?.Shoulders || []),
+      ...(broSplit?.Legs || []),
+      ...(broSplit?.Arms || []),
+    ];
+    setAlternateExercises([...new Set(alternateList)]);
+  }, []);
+
+  useEffect(() => {
+    if (workoutType === 'Bro Split (Single Muscle)') {
+      setMuscleGroups(Object.keys(exercises['Bro Split (Single Muscle)']));
+      setExercisesList([]);
+      form.setValue('muscle_group', '');
+      resetExerciseFields();
+    } else if (workoutType) {
+      setMuscleGroups([]);
+      const list = exercises[workoutType as keyof typeof exercises];
+      if (Array.isArray(list)) {
+        setExercisesList(list);
+      } else {
+        setExercisesList([]);
+      }
+      form.setValue('muscle_group', undefined);
+      resetExerciseFields();
+    } else {
+      setExercisesList([]);
+      setMuscleGroups([]);
+      form.setValue('muscle_group', undefined);
+      resetExerciseFields();
+    }
+  }, [workoutType]);
+
+  useEffect(() => {
+    if (workoutType === 'Bro Split (Single Muscle)' && muscleGroup) {
+      const muscleExercises =
+        exercises['Bro Split (Single Muscle)'][muscleGroup as keyof typeof exercises['Bro Split (Single Muscle)']] || [];
+      setExercisesList(muscleExercises);
+      resetExerciseFields();
+    }
+  }, [muscleGroup]);
+
+  const resetExerciseFields = () => {
+    form.setValue('exercises', [
+      {
+        exercise_name: '',
+        sets: 1,
+        reps: 1,
+        weight: undefined,
+        set_type: undefined,
+        additional_exercises: [],
+      },
+    ]);
+  };
+
+  const fetchExercises = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        toast.error('Please login');
+        navigate('/login');
+        return;
+      }
+      console.log('Fetching exercises from:', `${import.meta.env.VITE_API_URL}/exercises`);
+      // const response = await axios.get(`${import.meta.env.VITE_API_URL}/exercises`, {
+      //   headers: { Authorization: `Bearer ${token}` },
+      // });
+      // setSavedExercises(response.data);
+    } catch (error: any) {
+      console.error('Error fetching exercises:', error);
+      if (error.code === 'ERR_NETWORK') {
+        toast.error('Cannot connect to the backend. Please ensure the server is running on http://localhost:5000.');
+      } else if (error.response?.status === 401) {
+        toast.error('Session expired. Please login again.');
+        navigate('/login');
+      } else {
+        toast.error('Failed to fetch exercises: ' + (error.message || 'Unknown error'));
+      }
+    }
+  };
+
+  async function onSubmit(values: FormValues) {
+    setLoading(true);
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        toast.error('Authentication required');
+        return;
+      }
+
+      const formattedDate = dayjs(values.exercise_date).format('YYYY-MM-DD');
+      console.log('Submitting date:', formattedDate);
+
+      const requests = values.exercises.map((exercise) => {
+        return axios.post(
+          `${import.meta.env.VITE_API_URL}/exercises`,
+          {
+            exercise_name: exercise.exercise_name,
+            sets: exercise.sets,
+            reps: exercise.reps,
+            weight: exercise.weight,
+            exercise_date: formattedDate,
+            workout_type: values.workout_type,
+            muscle_group: values.muscle_group,
+            set_type: exercise.set_type,
+            additional_exercises: exercise.additional_exercises || [],
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+      });
+
+      await Promise.all(requests);
+      toast.success('Exercises added successfully!');
+      form.reset({
+        exercise_date: values.exercise_date, // Retain selected date
+        workout_type: undefined,
+        muscle_group: undefined,
+        exercises: [
+          {
+            exercise_name: '',
+            sets: 1,
+            reps: 1,
+            weight: undefined,
+            set_type: undefined,
+            additional_exercises: [],
+          },
+        ],
+      });
+      fetchExercises();
+    } catch (error) {
+      console.error('Error adding exercises:', error);
+      toast.error('Failed to add exercises');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-primary">Gym Notes</h1>
+          <Button variant="outline" onClick={handleLogout}>
+            <Icons.logout className="mr-2 h-4 w-4" />
+            Logout
+          </Button>
+        </div>
+
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle className="text-xl">Add New Workout</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField
+                    control={form.control}
+                    name="exercise_date"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col">
+                        <FormLabel>Date</FormLabel>
+                        <FormControl>
+                          <DatePicker
+                            className={`w-full dark:bg-background dark:text-foreground ${isDarkMode ? "bg-[#212121] text-[#fbfbfb]" : ""
+                              }`} format="YYYY-MM-DD"
+                            style={{
+                              backgroundColor: isDarkMode ? "transparent" : undefined,
+                              color: isDarkMode ? "#fbfbfb" : undefined,
+                              borderBottomColor: isDarkMode ? "#ffffff26" : undefined,
+                              borderLeftColor: isDarkMode ? "#ffffff26" : undefined,
+                              borderRightColor: isDarkMode ? "#ffffff26" : undefined,
+                              borderTopColor: isDarkMode ? "#ffffff26" : undefined,
+
+                            }}
+                            value={field.value ? dayjs(field.value) : undefined}
+                            onChange={(date: Dayjs | null) => {
+                              const newDate = date ? date.toDate() : new Date();
+                              field.onChange(newDate);
+                            }}
+                          />
+
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="workout_type"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Workout Type</FormLabel>
+                        <FormControl>
+                          <Select
+                            showSearch
+                            placeholder="Select workout type"
+                            optionFilterProp="children"
+                            onChange={field.onChange}
+                            value={field.value}
+                            filterOption={(input, option) =>
+                              (option?.children as string).toLowerCase().includes(input.toLowerCase())
+                            }
+                            className={`w-full dark:bg-background dark:text-foreground ${isDarkMode ? 'bg-[#212121] text-[#fbfbfb]' : ''
+                              }`}
+                            style={{
+                              backgroundColor: isDarkMode ? 'transparent' : undefined,
+                              color: isDarkMode ? '#fbfbfb' : undefined,
+                              borderBottomColor: isDarkMode ? '#ffffff26' : undefined,
+                              borderLeftColor: isDarkMode ? '#ffffff26' : undefined,
+                              borderRightColor: isDarkMode ? '#ffffff26' : undefined,
+                              borderTopColor: isDarkMode ? '#ffffff26' : undefined,
+                            }}
+                            // dropdownStyle={{
+                            //   backgroundColor: isDarkMode ? '#1f1f1f' : '#fff',
+                            //   color: isDarkMode ? '#000':'#fbfbfb',
+                            // }}
+                          >
+                            {['Upper Body', 'Lower Body', 'Full Body', 'Bro Split (Single Muscle)'].map((type) => (
+                              <Option key={type} value={type}>
+                                {type}
+                              </Option>
+                            ))}
+                          </Select>
+
+
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  {workoutType === 'Bro Split (Single Muscle)' && (
+                    <FormField
+                      control={form.control}
+                      name="muscle_group"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Muscle Group</FormLabel>
+                          <FormControl>
+                            <Select
+                              showSearch
+                              placeholder="Select muscle group"
+                              optionFilterProp="children"
+                              onChange={field.onChange}
+                              value={field.value}
+                              filterOption={(input, option) =>
+                                (option?.children as string).toLowerCase().includes(input.toLowerCase())
+                              }
+                              style={{ width: '100%' }}
+                            >
+                              {muscleGroups.map((group) => (
+                                <Option key={group} value={group}>{group}</Option>
+                              ))}
+                            </Select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
+                </div>
+
+                {fields.map((field, index) => (
+                  <Card key={field.id} className="mt-4">
+                    <CardHeader className="flex flex-row items-center justify-between">
+                      <CardTitle className="text-lg">Exercise {index + 1}</CardTitle>
+                      {fields.length > 1 && (
+                        <Button variant="ghost" size="icon" onClick={() => remove(index)}>
+                          <Icons.trash className="h-4 w-4" />
+                        </Button>
+                      )}
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name={`exercises.${index}.exercise_name`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Exercise Name</FormLabel>
+                              <FormControl>
+                                <Select
+                                  showSearch
+                                  placeholder="Select exercise"
+                                  optionFilterProp="children"
+                                  onChange={field.onChange}
+                                  value={field.value}
+                                  disabled={!workoutType || (workoutType === 'Bro Split (Single Muscle)' && !muscleGroup)}
+                                  filterOption={(input, option) =>
+                                    (option?.children as string).toLowerCase().includes(input.toLowerCase())
+                                  }
+                                  style={{ width: '100%' }}
+                                >
+                                  {exercisesList.map((exercise) => (
+                                    <Option key={exercise} value={exercise}>{exercise}</Option>
+                                  ))}
+                                </Select>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <div className="flex gap-2 justify-between">
+                          <FormField
+                            control={form.control}
+                            name={`exercises.${index}.sets`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Sets</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    min={1}
+                                    placeholder="e.g., 3"
+                                    {...field}
+                                    onChange={(e) => field.onChange(Number(e.target.value))}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name={`exercises.${index}.reps`}
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Reps</FormLabel>
+                                <FormControl>
+                                  <Input
+                                    type="number"
+                                    min={1}
+                                    placeholder="e.g., 10"
+                                    {...field}
+                                    onChange={(e) => field.onChange(Number(e.target.value))}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name={`exercises.${index}.weight`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Weight (kg)</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="number"
+                                  min={0}
+                                  placeholder="e.g., 50"
+                                  {...field}
+                                  onChange={(e) => field.onChange(Number(e.target.value))}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name={`exercises.${index}.set_type`}
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Set Type (Optional)</FormLabel>
+                              <FormControl>
+                                <Select
+                                  placeholder="Select set type"
+                                  onChange={(value) => {
+                                    field.onChange(value);
+                                    if (value !== 'Superset' && value !== 'Alternate') {
+                                      form.setValue(`exercises.${index}.additional_exercises`, []);
+                                    }
+                                  }}
+                                  value={field.value}
+                                  style={{ width: '100%' }}
+                                  allowClear
+                                >
+                                  <Option value="Superset">Superset</Option>
+                                  <Option value="Dropset">Dropset</Option>
+                                  <Option value="Alternate">Alternate</Option>
+                                </Select>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        {(form.watch(`exercises.${index}.set_type`) === 'Superset' ||
+                          form.watch(`exercises.${index}.set_type`) === 'Alternate') && (
+                            <FormField
+                              control={form.control}
+                              name={`exercises.${index}.additional_exercises`}
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Additional Exercises (Optional)</FormLabel>
+                                  <FormControl>
+                                    <Select
+                                      mode="multiple"
+                                      placeholder="Select additional exercises"
+                                      onChange={field.onChange}
+                                      value={field.value}
+                                      disabled={!workoutType || (workoutType === 'Bro Split (Single Muscle)' && !muscleGroup)}
+                                      style={{ width: '100%' }}
+                                      allowClear
+                                    >
+                                      {(form.watch(`exercises.${index}.set_type`) === 'Alternate'
+                                        ? alternateExercises
+                                        : exercisesList
+                                      )
+                                        .filter((ex) => ex !== form.getValues(`exercises.${index}.exercise_name`))
+                                        .map((exercise) => (
+                                          <Option key={exercise} value={exercise}>
+                                            {exercise}
+                                          </Option>
+                                        ))}
+                                    </Select>
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+                <div className="flex gap-1.5">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    className="mt-4"
+                    onClick={() =>
+                      append({
+                        exercise_name: '',
+                        sets: 1,
+                        reps: 1,
+                        weight: undefined,
+                        set_type: undefined,
+                        additional_exercises: [],
+                      })
+                    }
+                  >
+                    <Icons.plus className="h-4 w-4" />
+                  </Button>
+                  <Button type="submit" disabled={loading} className="mt-4">
+                    {loading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
+                    Add Workout
+                  </Button>
+                </div>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+  );
+}

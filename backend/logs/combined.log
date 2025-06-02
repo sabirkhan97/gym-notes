@@ -1,0 +1,211 @@
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:31:46.740Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:31:58.716Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:34:07.437Z"}
+{"level":"info","message":"POST /api/auth/signup","timestamp":"2025-06-02T04:34:29.163Z"}
+{"level":"info","message":"POST /api/auth/signup","timestamp":"2025-06-02T04:34:56.741Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T04:35:05.987Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T04:35:13.857Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:35:59.696Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:44:16.623Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:44:32.553Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:45:19.355Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:45:36.246Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:45:49.893Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:52:09.900Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:52:41.537Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:53:08.577Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T04:54:48.520Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:06:57.563Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:07:34.838Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:13:02.962Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:18:46.377Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:19:39.111Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:20:07.592Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:20:45.942Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:20:54.325Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:21:11.060Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:21:18.742Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:21:40.759Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:22:07.271Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:23:22.410Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:25:58.393Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:26:28.066Z"}
+{"level":"info","message":"POST /api/auth/signup","timestamp":"2025-06-02T05:27:02.935Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T05:27:20.810Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:27:28.183Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:34:53.998Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:35:05.248Z"}
+{"level":"info","message":"Server running on port 5000","timestamp":"2025-06-02T05:35:32.771Z"}
+{"level":"info","message":"POST /api/auth/signup","timestamp":"2025-06-02T05:38:05.987Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:38:06.306Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:38:06.315Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T05:38:20.010Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:38:20.211Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:38:20.216Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:42:05.404Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:42:05.408Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:42:05.410Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:42:05.413Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:42:05.462Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:43:43.805Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:43:43.808Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:43:43.810Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:43:43.867Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:55:20.835Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:55:20.850Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T05:58:35.967Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T05:58:36.004Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:05:49.040Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:05:49.060Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:06:38.830Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:06:38.846Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:06:38.851Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:06:38.856Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:06:53.050Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T06:07:01.100Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:07:01.269Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:07:01.274Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:07:01.278Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:07:36.442Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:07:36.457Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:09:39.701Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:09:39.719Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:25:47.706Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:25:47.721Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:26:26.889Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:26:26.904Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:26:46.738Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:26:46.752Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:28:40.189Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:28:40.203Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:32:23.701Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:32:23.718Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:33:15.648Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:33:15.662Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:40:40.079Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:40:40.093Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:41:55.046Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:41:55.063Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:42:01.204Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:42:01.208Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:42:40.551Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:40.362Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:40.737Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:42.500Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:54.027Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:54.040Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:55.828Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:55.833Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:57.410Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:46:57.415Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:47:17.134Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:47:17.147Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:47:20.944Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:47:28.858Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:47:28.861Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:54:29.578Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:54:32.079Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T06:55:34.496Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T06:55:45.410Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:08:25.293Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:08:30.992Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:08:48.323Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:08:50.355Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:08:54.383Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:09:19.991Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:09:21.002Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:09:23.020Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:09:27.046Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:26.498Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:27.508Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:29.523Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:33.548Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T07:11:50.369Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:52.441Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:53.452Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:55.476Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:11:59.489Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:17.204Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:18.213Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:20.230Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:24.256Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:28.782Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:29.805Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:31.826Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:35.856Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:40.098Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:41.107Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:43.119Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:47.461Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:48.480Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:50.499Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:12:54.526Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:13:27.414Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:13:28.427Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:13:30.446Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:13:34.473Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:14:02.060Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:14:03.071Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:14:05.089Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:14:09.117Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T07:14:38.576Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:14:41.501Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T07:24:56.016Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:24:59.897Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T07:25:22.177Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:25:35.428Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:30:45.032Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T07:30:59.317Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T08:17:50.059Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T08:17:57.194Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T08:20:29.743Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T08:20:55.388Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T08:21:56.318Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T08:22:07.771Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:22:13.061Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:22:19.226Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T08:22:36.363Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:22:49.079Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:22:50.263Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:22:51.197Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:22:51.980Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:27:26.953Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:36:50.767Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:36:51.962Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:36:56.997Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:48:28.521Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T08:53:30.999Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:01:22.297Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T09:02:23.552Z"}
+{"level":"info","message":"POST /api/exercises","timestamp":"2025-06-02T09:02:23.554Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:02:32.162Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:02:47.439Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:29.476Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:32.381Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:34.397Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:38.420Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:45.723Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:46.744Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:48.758Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:52.767Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:55.057Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:36:56.079Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:37:08.668Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:37:11.014Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:39:42.880Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T09:42:42.858Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:48:07.477Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:48:12.386Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:48:13.281Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:48:14.204Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T09:48:31.983Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T10:35:12.044Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T10:54:42.960Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T11:23:25.193Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T11:25:54.307Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T11:44:46.441Z"}
+{"level":"info","message":"POST /api/auth/login","timestamp":"2025-06-02T11:49:36.186Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T12:32:48.596Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T12:42:17.593Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T12:42:55.698Z"}
+{"level":"info","message":"GET /api/exercises","timestamp":"2025-06-02T12:47:31.246Z"}
